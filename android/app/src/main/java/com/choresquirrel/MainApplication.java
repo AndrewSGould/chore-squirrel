@@ -1,4 +1,4 @@
-package com.boilerplate;
+package com.choresquirrel;
 
 import android.app.Application;
 import android.content.Context;
