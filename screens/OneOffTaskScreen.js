@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   Text,
 } from "react-native";
+import { Button } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import { db } from "../config";
 
@@ -20,6 +21,10 @@ export default class OneOffTaskScreen extends Component {
   state = {
     name: "",
   };
+
+  setNativeProps(nativeProps) {
+    this._root.setNativeProps(nativeProps);
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -39,15 +44,16 @@ export default class OneOffTaskScreen extends Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-          <Text style={styles.title}>Add Item</Text>
-          <TextInput style={styles.itemInput} onChange={this.handleChange} />
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor='white'
-            onPress={this.handleSubmit}
-          >
-            <Text style={styles.buttonText}>Add</Text>
-          </TouchableHighlight>
+          <Text style={styles.baseText}>Add Item</Text>
+          <TextInput
+            style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+            onChange={this.handleChange}
+          />
+          {/* <TouchableHighlight underlayColor='white' onPress={this.handleSubmit}>
+            <Button title='Add'></Button>
+          </TouchableHighlight> */}
+
+          <Button title='Add' onPress={this.handleSubmit}></Button>
         </ScrollView>
       </View>
     );
@@ -106,5 +112,13 @@ const styles = StyleSheet.create({
   },
   navigationFilename: {
     marginTop: 5,
+  },
+  baseText: {
+    fontFamily: "Cochin",
+    fontSize: 20,
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
